@@ -1,0 +1,132 @@
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  Button,
+  Container,
+  CssBaseline,
+  TextField,
+  Typography,
+} from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { styled } from "@mui/system";
+import "./login.css";
+
+const useStyles = styled((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+  background: {
+    background: "linear-gradient(135deg, #acb6e5 10%, #86fde8 100%)",
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cont: {
+    display: "flex",
+    flexDirection: "columns",
+    justifyContent: "center",
+    top: "100px",
+  },
+}));
+
+function Login() {
+  const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleLogin = () => {
+    const userList = JSON.parse(localStorage.getItem("list")) || [];
+
+    const user = userList.find((user) => user.email === email);
+
+    if (user && password === user.passwordr) {
+      // Authentication successful, store the login status
+      localStorage.setItem("isLoggedIn", true);
+      navigate("/post");
+    } else {
+      window.alert("Enter valid credentials");
+    }
+  };
+
+  return (
+    <div className={classes.background}>
+      <Container component="main" maxWidth="xs" className={classes.cont}>
+        <CssBaseline />
+        <div className={classes.paper}>
+          <LockOutlinedIcon className={classes.avatar} />
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <form className={classes.form} Validate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              value={email}
+              onChange={handleChangeEmail}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={handleChangePassword}
+            />
+            <Button
+              type="button"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={handleLogin}
+            >
+              Sign In
+            </Button>
+            <Link to="/register">
+              <Button fullWidth variant="contained" color="secondary">
+                Sign Up
+              </Button>
+            </Link>
+          </form>
+        </div>
+      </Container>
+    </div>
+  );
+}
+
+export default Login;

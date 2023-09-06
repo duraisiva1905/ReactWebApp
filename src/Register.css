@@ -1,0 +1,103 @@
+/* Register.css */
+
+.Register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(135deg, #acb6e5 10%, #86fde8 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.Register-form {
+  box-shadow: #6cf8ff67;
+  background-color: #ffffff62;
+  position: relative;
+  padding: 35px 20px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0.5, 0.5, 0.5, 0.1);
+  width: 450px;
+  /* height: 50px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(13.3px);
+  -webkit-backdrop-filter: blur(13.3px);
+  border: 1px solid rgba(255, 255, 255, 0.83);
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.427);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(2, 1, 1, 0.1);
+  backdrop-filter: blur(25.3px);
+  -webkit-backdrop-filter: blur(13.3px);
+  border: 0px solid rgba(255, 255, 255, 0.83);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  color: #3f3f3f;
+  text-shadow: #000000;
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover {
+  background-color: #9a9a9a;
+  border-color: #555;
+}
+
+h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+button {
+  background-color: #a108a6c9;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 95%;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #f67fff80;
+  color: #000000;
+}
+
+@media screen and (max-width: 300px) {
+  .login-form {
+    width: 90%;
+  }
+}
+
+.logo-img {
+  width: 70px;
+  height: auto;
+  position: absolute;
+  left: 190px;
+  top: -40px;
+  border: #ccc;
+}
